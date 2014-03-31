@@ -1,0 +1,26 @@
+{
+  "name": "generator-wordpress-plugin",
+  "version": "0.0.1",
+  "description": "A Yeoman generator for non-bloated, easily maintainable wordpress plugins",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "naymspace/generator-wordpress-plugin",
+  "author": {
+    "name": "Pierre Beitz",
+    "email": "",
+    "url": "https://github.com/naymspace"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "yeoman-generator", "wordpress", "plugin", "boilerplate"
+  ],
+  "dependencies": {
+    "yeoman-generator": "~0.16.0",
+    "chalk": "~0.4.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}
