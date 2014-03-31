@@ -1,17 +1,19 @@
 # generator-naymspace-wp-plugin
 
-> A [Yeoman](http://yeoman.io) generator that aims to make plugin creation a breeze.
+> A [Yeoman](http://yeoman.io) generator that aims to make plugin development of any kind a breeze. 
 >
-> This is an **alpha release**. Nevertheless you are able to create a basic plugin with this boilerplate. We believe that this is an excellent approach to wp-plugin-development and hope for contributions!
+> This is an **alpha release**. Nevertheless it will create an extremely opinionated plugin-structure for you. We believe that this is an excellent approach to wp-plugin-development and hope for contributions!
 >
-> As we will be creating more plugins for our customers in the future, we will extend and add new modules every now and then. We will try to actively promote the development of this plugin.
+> As we will be creating more plugins for our customers in the future, we will add and extend new modules every now and then. We will try to actively promote the development of this plugin.
 
 ## Getting Started
 
     yo naymspace-wp-plugin
 
 ## Why should i use this?
-This opinionated plugin-boilerplate was written for developers (ourselves). Therefore it's built to be easily understandable, maintainable and extendable. After the generator has done it's work, the plugin will be recognized by wordpress' plugin manager and you can start developing.
+This opinionated plugin-boilerplate has been written for ourselves, for developers. Therefore it's built to be easily understandable, maintainable and extendable. It will not just setup plugin meta-data, but structure your whole plugin and provide usefull modules which will guide you and make you encourage best practives. 
+
+After the generator has done it's work, the plugin will be recognized by wordpress' plugin manager and you can immediately start developing.
 
 ## Yeoman did all his fancy magic, what now?
 
@@ -19,7 +21,8 @@ Now you will have to get your hands dirty and alter the index.php and the module
 
 #### index.php
 
-This is where your plugin's **options** go, that you want to be configured via the Backend. Add them to your plugin's Base::options hash like so:
+Please have a look at [wordpress' codex](https://codex.wordpress.org/Writing_a_Plugin#File_Headers), which explains how to setup a plugins metadata.
+This is where your plugin's **options**, that you want to be configured via the Backend, go as well. You can add them to your plugin's Base::$options hash (in index.php):
 
     'someOption' => array(
         'id'    => '<%= namespace %>-someOption',
@@ -27,21 +30,22 @@ This is where your plugin's **options** go, that you want to be configured via t
         'type'  => '[checkbox|text]'
     ),
 
-The "<%= namespace %>" will be replaced by the generator, depending on the namespace and plugin name you provided. This is solely to prevent namespace-clashes, when using options in your plugin the hash-key ('someOption') acts as an id.
+You can retrieve the current value of your option in (almost) any place in your plugin via: 
 
-Please have a look at [wordpress' codex](https://codex.wordpress.org/Writing_a_Plugin#File_Headers), which explains what metadata will be shown by wordpress' plugin manager.
+    Helper::get_option('someOption');
 
-Aside from that you only have to care about what modules are loaded when in the constructor. By default no modules are loaded.
+
+Aside from that, you only have to care about which modules are loaded in the constructor.
 
 ## Modules
-We aim to separate most features into modules. This way no unneccessary code has to be loaded, if it is not needed.
-For now there are just 3 modules:
+The goal of this project is to have separate modules for separate concerns. This way no unneccessary code has to be loaded.
+For now there are:
 
-#### Helper
-Some static methods to make your life a little easier.
+#### The Helper
+It's loaded automatically and contains some static methods to make your life easier. You should have a look!
 
 #### Frontend
-Loads scripts/main.js and stylesheets/main.css by default. Have a look into the module.
+Shows you how to load scripts and styles!
 
 #### Backend
 Creates an options page in the backend, which renders all the options you specified in the plugin's index.php.
@@ -49,13 +53,15 @@ Creates an options page in the backend, which renders all the options you specif
 #### Database
 This is just a stub. Please contribute!
 
-## TODO
-* Retrieve options via Helper.
-* Default values for options.
-* Add AJAX-module
-* Add more functionality to database-module
-* use plugin-name for options-page
+## Goals of this project
+* Make the wordpress plugin ecosystem a better place. No more 3000-lines-of-code-files!
+* Be be sparing with resources: load and process things only when they are really needed to.
+* Keep code maintain- and extendable via modules.
+* Encourage best pratices.
 
+## TODO
+* Add more modules (AJAX)
+* Add more functionality to the database-module
 
 ## License
 
