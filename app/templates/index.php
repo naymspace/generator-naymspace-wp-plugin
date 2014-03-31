@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: <%= namespace %>
+Plugin Name: <%= name %>
 Version: 0.0.1
 */
 
@@ -19,24 +19,26 @@ namespace <%= namespace %>;
 class Base {
 
   // options to be set in the admin-area
+  <% if (includeBackend){ %>
   public static $options = array(
-    <% if (includeBackend){ %>
     'someTextOption' => array(
-      'id'    => '<%= namespace %>-someTextOption',
-      'title' => 'Some description',
-      'type'  => 'text'
+      'id'      => '<%= namespace %>-someTextOption',
+      'title'   => 'Some description',
+      'type'    => 'text',
+      'default' => 'my default text'
     ),
     'someCheckboxOption' => array(
       'id'    => '<%= namespace %>-someCheckboxOption',
       'title' => 'Some description',
-      'type'  => 'checkbox'
-    ),
-    <% } %>
+      'type'  => 'checkbox',
+      'default' => 1
+    )
   );
+  <% } %>
 
   function __construct() {
-
     spl_autoload_register( array($this, 'plugin_autoloader') );
+    register_activation_hook( __FILE__, array($this, 'activate_plugin') );
     <% if (includeBackend){ %>
     if ( Helper::in_backend() ){
       new Backend();
@@ -57,6 +59,14 @@ class Base {
 
     if ( file_exists ("{$dir}/modules/{$className}.php" ) ){
       require_once "{$dir}/modules/{$className}.php";
+    }
+  }
+
+  function activate_plugin() {
+    foreach ( Base::$options as $option ) {
+      if($option['default'] && null !== (get_option($option['id']))){
+        update_option( $option['id'], $option['default'] );
+      }
     }
   }
 }

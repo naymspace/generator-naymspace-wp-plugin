@@ -20,7 +20,7 @@ class Backend {
 
   // displays plugins menu in wordpress' toolbar, TODO: alter the second string, if you want a more readable name in the backend
   function plugin_menu() {
-    add_options_page( '<%= namespace %>', '<%= namespace %>', 'manage_options', '<%= namespace %>-options', function () {
+    add_options_page( '<%= name %>', '<%= name %>', 'manage_options', '<%= namespace %>-options', function () {
 
       if ( !current_user_can( 'manage_options' ) ) {
         wp_die( __( 'Sie besitzen nicht die Rechte zum Bearbeiten.' ) );
@@ -33,7 +33,6 @@ class Backend {
 
       // display plugin's options page
       Helper::render_template('admin/options');
-
     });
   }
 
@@ -42,7 +41,7 @@ class Backend {
   function handle_options() {
     foreach ( Base::$options as $option ) {
       $id = $option['id'];
-      $new_value = $_POST[ $id ];
+      $new_value = isset($_POST[ $id ]) ? $_POST[ $id ] : null;
       switch ( $option['type'] ) {
       case 'text':
         if ( isset( $new_value ) )
