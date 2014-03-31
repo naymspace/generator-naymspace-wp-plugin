@@ -1,4 +1,4 @@
-<?php namespace <%namespace%>; ?>
+<?php namespace <%= namespace %>; ?>
 
 <div class="wrap">
   <h2>Optionen</h2>

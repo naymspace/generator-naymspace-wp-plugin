@@ -10,7 +10,7 @@
  */
 
 
-namespace <%namespace%>;
+namespace <%= namespace %>;
 
 class Frontend{
 

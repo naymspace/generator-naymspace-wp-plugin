@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: <%namespace%>
+Plugin Name: <%= namespace %>
 Version: 0.0.1
 */
 
@@ -14,27 +14,40 @@ Version: 0.0.1
  * ******************************************************************
  */
 
-namespace <%namespace%>;
+namespace <%= namespace %>;
 
 class Base {
 
   // options to be set in the admin-area
   public static $options = array(
-    // 'someOption' => array(
-    //   'id'    => '<%namespace%>-someOption',
-    //   'title' => 'Some description for the admins',
-    //   'type'  => '[checkbox|text]'
-    // ),
+    <% if (includeBackend){ %>
+    'someTextOption' => array(
+      'id'    => '<%= namespace %>-someTextOption',
+      'title' => 'Some description',
+      'type'  => 'text'
+    ),
+    'someCheckboxOption' => array(
+      'id'    => '<%= namespace %>-someCheckboxOption',
+      'title' => 'Some description',
+      'type'  => 'checkbox'
+    ),
+    <% } %>
   );
 
   function __construct() {
-    spl_autoload_register( array($this, 'plugin_autoloader') );
 
+    spl_autoload_register( array($this, 'plugin_autoloader') );
+    <% if (includeBackend){ %>
     if ( Helper::in_backend() ){
-      // new Backend();
-    } else{
-      // new Frontend();
+      new Backend();
     }
+    <% } if (includeFrontend){ %>
+    if ( !Helper::in_backend() ){
+      new Frontend();
+    }
+    <% } if (includeDatabase){%>
+    new Database();
+    <% } %>
   }
 
   function plugin_autoloader ( $class ) {

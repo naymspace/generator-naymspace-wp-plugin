@@ -13,7 +13,7 @@
 /**
  * THIS IS WORK IN PROGRESS, AND NOT TESTED IN ANY WAY! FEEL FREE TO CONTRIBUTE
  */
-namespace <%namespace%>;
+namespace <%= namespace %>;
 
 /*
  * ### SETUP ###

@@ -10,7 +10,7 @@
  */
 
 
-namespace <%namespace%>;
+namespace <%= namespace %>;
 
 class Backend {
 
@@ -20,7 +20,7 @@ class Backend {
 
   // displays plugins menu in wordpress' toolbar, TODO: alter the second string, if you want a more readable name in the backend
   function plugin_menu() {
-    add_options_page( '<%namespace%>', '<%namespace%>', 'manage_options', '<%namespace%>-options', function () {
+    add_options_page( '<%= namespace %>', '<%= namespace %>', 'manage_options', '<%= namespace %>-options', function () {
 
       if ( !current_user_can( 'manage_options' ) ) {
         wp_die( __( 'Sie besitzen nicht die Rechte zum Bearbeiten.' ) );

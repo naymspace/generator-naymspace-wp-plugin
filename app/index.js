@@ -10,9 +10,10 @@ var foreach = function(obj, fn) {
     }
   }
 };
+
 var modules = {
-  Backend: true,
   Frontend: true,
+  Backend: true,
   Database: false,
 };
 
@@ -37,8 +38,8 @@ var WordpressPluginGenerator = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'namespace',
-      message: 'In what namespace is your Plugin supposed to live?',
+      name: 'supNamespace',
+      message: 'You may now enter a sup-namespace for your plugin?',
       default: 'naymspace'
     }, {
       type: 'input',
@@ -66,7 +67,8 @@ var WordpressPluginGenerator = yeoman.generators.Base.extend({
       });
 
       this.name = props.name;
-      this.namespace = props.namespace;
+      this.supNamespace = props.supNamespace;
+      this.namespace = this.supNamespace ? this.supNamespace + '\\' + this.name : this.name;
 
       done();
     }.bind(this));
@@ -74,24 +76,19 @@ var WordpressPluginGenerator = yeoman.generators.Base.extend({
 
   app: function() {
     var me = this;
-    this.copy('index.php', 'index.php', this.applyNamespace.bind(this));
-    this.directory('scripts', 'scripts', this.applyNamespace.bind(this));
-    this.directory('stylesheets', 'stylesheets', this.applyNamespace.bind(this));
-    this.directory('templates', 'templates', this.applyNamespace.bind(this));
+    this.copy('index.php', 'index.php');
+    this.directory('scripts', 'scripts');
+    this.directory('stylesheets', 'stylesheets');
+    this.directory('templates', 'templates');
 
     this.mkdir('modules');
-    this.copy('modules/Helper.php', 'modules/Helper.php', this.applyNamespace.bind(this));
+    this.copy('modules/Helper.php', 'modules/Helper.php');
     foreach(modules, function(module) {
       if (me['include' + module]) {
         var path = 'modules/' + module + '.php';
-        me.copy(path, path, me.applyNamespace.bind(me));
+        me.copy(path, path);
       }
     });
-  },
-
-  applyNamespace: function(str) {
-    var namespace = this.namespace ? this.namespace + '\\' + this.name : this.name;
-    return str ? str.replace(/<%namespace%>/g, namespace) : '';
   },
 
   projectfiles: function() {
