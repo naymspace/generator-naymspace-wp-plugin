@@ -18,6 +18,10 @@ class Helper {
     return is_admin() && ( !defined( 'DOING_AJAX' ) || !DOING_AJAX );
   }
 
+  public static function get_option($option) {
+    return get_option(Base::$options[$option]['id']);
+  }
+
   public static function render_template($name, $option = null){
     include dirname(dirname(__FILE__ ))."/templates/{$name}.php";
   }

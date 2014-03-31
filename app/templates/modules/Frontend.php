@@ -16,7 +16,9 @@ class Frontend{
 
   function __construct(){
     add_action( 'wp_enqueue_scripts', array($this, 'register_assets'));
-    // add_action('wp_footer', function(){ Helper::render_template('myTemplate'); }); // render some template in the footer
+    // if Helper::get_option('someCheckboxOption'){
+    //  add_action('wp_footer', function(){ Helper::render_template('myTemplate'); }); // render some template in the footer
+    // }
   }
 
   // load your scripts and styles
