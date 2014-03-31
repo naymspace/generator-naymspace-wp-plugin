@@ -1,4 +1,4 @@
-# generator-wordpress-plugin <!-- [![Build Status](https://secure.travis-ci.org/pierrebeitz/generator-wordpress-plugin.png?branch=master)](https://travis-ci.org/pierrebeitz/generator-wordpress-plugin) -->
+# generator-naymspace-wp-plugin
 
 > A [Yeoman](http://yeoman.io) generator that aims to make plugin creation a breeze. 
 > 
@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-    yo generator-wordpress-plugin
+    yo naymspace-wp-plugin
 
 ## Why should i use this?
 This opinionated plugin-boilerplate was written for developers (ourselves). Therefore it's built to be easily understandable, maintainable and extendable. After the generator has done it's work, the plugin will be recognized by wordpress' plugin manager and you can start developing.

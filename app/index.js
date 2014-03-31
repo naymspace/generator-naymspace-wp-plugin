@@ -30,10 +30,10 @@ var WordpressPluginGenerator = yeoman.generators.Base.extend({
     var done = this.async();
     var me = this;
     // have Yeoman greet the user
-    // this.log(this.yeoman);
+    this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('You\'re using the wordpress-plugin generator.'));
+    this.log(chalk.magenta('You\'re using the naymspace-wp-pluginword generator.'));
 
     var prompts = [{
       type: 'input',
