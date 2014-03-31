@@ -1,6 +1,6 @@
 {
   "name": "generator-naymspace-wp-plugin",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A Yeoman generator for non-bloated, easily maintainable wordpress plugins",
   "license": "MIT",
   "main": "app/index.js",
