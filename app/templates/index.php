@@ -54,8 +54,7 @@ class Base {
 
   function plugin_autoloader ( $class ) {
     $dir = dirname(__FILE__);
-    $namespace = explode('\\', $class);
-    $className = $namespace[ count($namespace)-1 ]; // this feels very hacky. any suggestions?
+    $className = end(explode('\\', $class));
 
     if ( file_exists ("{$dir}/modules/{$className}.php" ) ){
       require_once "{$dir}/modules/{$className}.php";
