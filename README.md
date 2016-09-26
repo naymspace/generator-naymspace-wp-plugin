@@ -1,6 +1,6 @@
 # generator-naymspace-wp-plugin
 
-> A [Yeoman](http://yeoman.io) generator that aims to make plugin development of any kind a breeze. 
+> A [Yeoman](http://yeoman.io) generator that aims to make plugin development of any kind a breeze.
 >
 > This is an **alpha release**. Nevertheless it will create an extremely opinionated plugin-structure for you. We believe that this is an excellent approach to wp-plugin-development and hope for contributions!
 >
@@ -11,7 +11,7 @@
     yo naymspace-wp-plugin
 
 ## Why should i use this?
-This opinionated plugin-boilerplate has been written for ourselves, for developers. Therefore it's built to be easily understandable, maintainable and extendable. It will not just setup plugin meta-data, but structure your whole plugin and provide usefull modules which will guide you and make you encourage best practives. 
+This opinionated plugin-boilerplate has been written for ourselves, for developers. Therefore it's built to be easily understandable, maintainable and extendable. It will not just setup plugin meta-data, but structure your whole plugin and provide usefull modules which will guide you and make you encourage best practives.
 
 After the generator has done it's work, the plugin will be recognized by wordpress' plugin manager and you can immediately start developing.
 
@@ -30,7 +30,7 @@ This is where your plugin's **options**, that you want to be configured via the 
         'type'  => '[checkbox|text]'
     ),
 
-You can retrieve the current value of your option in (almost) any place in your plugin via: 
+You can retrieve the current value of your option in (almost) any place in your plugin via:
 
     Helper::get_option('someOption');
 
